@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>springboot_parent</artifactId>
+        <groupId>com.hhqiwei</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <!-- 基本信息 -->
+    <groupId>com.hhqiwei</groupId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <name>springboot_web</name>
+    <artifactId>springboot_web</artifactId>
+
+    <!-- Web模块相关依赖 -->
+    <dependencies>
+        <dependency>
+            <groupId>com.hhqiwei</groupId>
+            <artifactId>springboot_service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.hhqiwei</groupId>
+            <artifactId>springboot_entity</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.hhqiwei</groupId>
+            <artifactId>springboot_common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>hhqiwei-web</finalName>
+        <plugins>
+            <!-- Srping Boot 打包工具 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.5.1.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 指定JDK编译版本 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profile.env>dev</profile.env>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profile.env>prod</profile.env>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>
