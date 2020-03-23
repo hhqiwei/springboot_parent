@@ -14,7 +14,8 @@ public class UserController {
     private DemoService demoService;
 
 
-    @GetMapping("test")
+//    @GetMapping("test")
+    @RequestMapping("test")
     public String test() {
         return "Hello World!";
     }
